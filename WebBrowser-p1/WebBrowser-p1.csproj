@@ -112,6 +112,7 @@
     <Content Include="Resources\instagram.png" />
     <Content Include="Resources\amkec-3yfj4-001.ico" />
     <Content Include="Resources\messenger.png" />
+    <None Include="Resources\resize.png" />
     <Content Include="Resources\whatsapp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

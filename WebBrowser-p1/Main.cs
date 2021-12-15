@@ -16,22 +16,18 @@ namespace WebBrowser_p1
         private bool mouseDown;
         private Point lastMouseLocation;
         private bool isMaximized = false;
-
-
-        private Panel sidePanel = new Panel();
-        
-
+        private bool isHidden;
 
         public Main()
         {
             InitializeComponent();
+            isHidden = true;
 
             mainWebBrowser.Navigate("https://www.google.com");
+            widgetsWebBrowser.Visible = false;
         }
-        private void initSidePanel()
-        {
 
-        }
+  
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -111,6 +107,58 @@ namespace WebBrowser_p1
                 this.WindowState = FormWindowState.Normal;
                 isMaximized = false;
             }
+        }
+
+        private void instagramButton_Click(object sender, EventArgs e)
+        {
+            slidePanelTimer.Start();
+            widgetsWebBrowser.Visible = true;
+            widgetsWebBrowser.Navigate("https://www.instagram.com");
+        }
+        private void slidePanelTimer_Tick(object sender, EventArgs e)
+        {
+            if (isHidden)
+            {
+                widgetsPanel.Width = widgetsPanel.Width + 100;
+                if(widgetsPanel.Width >= 600)
+                {
+                    slidePanelTimer.Stop();
+                    isHidden = false;
+                    this.Refresh();
+                }
+            }
+            else
+            {
+                widgetsPanel.Width = widgetsPanel.Width - 100;
+                if (widgetsPanel.Width <= 60)
+                {
+                    widgetsWebBrowser.Visible = false;
+                    slidePanelTimer.Stop();
+                    isHidden = true;
+                    this.Refresh();
+                }
+            }
+        }
+
+        private void messengerButton_Click(object sender, EventArgs e)
+        {
+            slidePanelTimer.Start();
+            widgetsWebBrowser.Visible = true;
+            widgetsWebBrowser.Navigate("https://www.facebook.com/messages");
+        }
+
+        private void discordButton_Click(object sender, EventArgs e)
+        {
+            slidePanelTimer.Start();
+            widgetsWebBrowser.Visible = true;
+            widgetsWebBrowser.Navigate("https://discord.com/login");
+        }
+
+        private void whatsappButton_Click(object sender, EventArgs e)
+        {
+            slidePanelTimer.Start();
+            widgetsWebBrowser.Visible = true;
+            widgetsWebBrowser.Navigate("https://web.whatsapp.com");
         }
     }
 }
