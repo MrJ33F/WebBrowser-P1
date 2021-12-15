@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WebBrowser_p1.Classes;
+
+
 
 namespace WebBrowser_p1
 {
@@ -18,22 +22,43 @@ namespace WebBrowser_p1
         private bool isMaximized = false;
         private bool isHidden;
 
+        private List<string> cuvinteCheie;
+        private SQLiteConnection conn; 
+
         public Main()
         {
             InitializeComponent();
+
+            conn = SQLiteHandler.ConnectToDb();
+            cuvinteCheie = SQLiteHandler.GetAllKeywords(conn);
+            SQLiteHandler.DisconnectFromDb(conn);
+            updateList();
+
             isHidden = true;
-
             mainWebBrowser.Navigate("https://www.google.com");
+            searchBox.Text = "https://www.google.com";
             widgetsWebBrowser.Visible = false;
+            mainBrowser.ScriptErrorsSuppressed = true;
         }
-
-  
-
         private void Main_Load(object sender, EventArgs e)
         {
 
         }
+        void updateList()
+        {
+            keyWordsCombo.Items.Clear();
 
+            keyWordsCombo.Text = "Utilizati butonul -> pentru a adauga cuvinte cheie.";
+
+            conn = SQLiteHandler.ConnectToDb();
+            cuvinteCheie = SQLiteHandler.GetAllKeywords(conn);
+            SQLiteHandler.DisconnectFromDb(conn);
+
+            foreach(string cuv in cuvinteCheie)
+            {
+                keyWordsCombo.Items.Add(cuv.ToString());
+            }
+        }
         private void widgetsPanel_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, this.widgetsPanel.ClientRectangle, Color.Aquamarine, ButtonBorderStyle.Solid);
@@ -159,6 +184,74 @@ namespace WebBrowser_p1
             slidePanelTimer.Start();
             widgetsWebBrowser.Visible = true;
             widgetsWebBrowser.Navigate("https://web.whatsapp.com");
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            mainBrowser.Document.Window.History.Go(-1);
+        }
+
+        private void nextButton_Click(object sender, EventArgs e)
+        {
+            mainBrowser.Document.Window.History.Go(1);
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            mainBrowser.Refresh();
+        }
+
+        private void homeButton_Click(object sender, EventArgs e)
+        {
+            mainBrowser.Navigate("https://www.google.com");
+        }
+
+        private void mainBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        {
+            string webURL = e.Url.ToString();
+
+            var rezultatFiltru = Task.Run(() => VerificareURL(webURL));
+            rezultatFiltru.Wait();
+
+            if (rezultatFiltru.Result)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Cuvant/URL introdus este blocat!");
+            }
+        }
+        private async Task<bool> VerificareURL(string webURL)
+        {
+            bool rezultatQuerry = await Task.Run(async () =>
+            {
+                return (from cuvant in cuvinteCheie
+                        where webURL.Contains(cuvant)
+                        select cuvant).Count() > 0;
+            });
+            return rezultatQuerry;
+        }
+
+        private void webStuffButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void keyWordsButton_Click(object sender, EventArgs e)
+        {
+            KeyWords keyWordsForm = new KeyWords();
+            if(keyWordsForm.ShowDialog() == DialogResult.OK)
+            {
+                string keyWord = keyWordsForm.getKeyWord();
+
+                conn = SQLiteHandler.ConnectToDb();
+                SQLiteHandler.InsertKeyword(conn, keyWord);
+                cuvinteCheie = SQLiteHandler.GetAllKeywords(conn);
+                SQLiteHandler.DisconnectFromDb(conn);
+
+                updateList();
+
+                MessageBox.Show(string.Format("S-a introdus: {0} in baza de date.", keyWord));
+            }
+           
         }
     }
 }

@@ -33,13 +33,13 @@
             this.widgetsWebBrowser = new System.Windows.Forms.WebBrowser();
             this.widgetsBar = new System.Windows.Forms.Panel();
             this.whatsappButton = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.webStuffButton = new System.Windows.Forms.Button();
             this.discordButton = new System.Windows.Forms.Button();
             this.messengerButton = new System.Windows.Forms.Button();
             this.instagramButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.webBrowserMain = new System.Windows.Forms.Panel();
-            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
+            this.mainBrowser = new System.Windows.Forms.WebBrowser();
             this.mainWebBrowser = new System.Windows.Forms.WebBrowser();
             this.webBrowserToolBar = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,9 +47,11 @@
             this.fullscreenButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
             this.searchPanel = new System.Windows.Forms.Panel();
+            this.keyWordsCombo = new System.Windows.Forms.ComboBox();
+            this.keyWordsButton = new System.Windows.Forms.Button();
+            this.homeButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.refreshButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
@@ -86,7 +88,7 @@
             // 
             this.widgetsBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.widgetsBar.Controls.Add(this.whatsappButton);
-            this.widgetsBar.Controls.Add(this.button12);
+            this.widgetsBar.Controls.Add(this.webStuffButton);
             this.widgetsBar.Controls.Add(this.discordButton);
             this.widgetsBar.Controls.Add(this.messengerButton);
             this.widgetsBar.Controls.Add(this.instagramButton);
@@ -113,20 +115,21 @@
             this.whatsappButton.UseVisualStyleBackColor = true;
             this.whatsappButton.Click += new System.EventHandler(this.whatsappButton_Click);
             // 
-            // button12
+            // webStuffButton
             // 
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(54)))));
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.SystemColors.Control;
-            this.button12.Image = global::WebBrowser_p1.Properties.Resources.browser;
-            this.button12.Location = new System.Drawing.Point(3, 7);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(44, 46);
-            this.button12.TabIndex = 11;
-            this.button12.UseVisualStyleBackColor = true;
+            this.webStuffButton.FlatAppearance.BorderSize = 0;
+            this.webStuffButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(54)))));
+            this.webStuffButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.webStuffButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.webStuffButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.webStuffButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.webStuffButton.Image = global::WebBrowser_p1.Properties.Resources.browser;
+            this.webStuffButton.Location = new System.Drawing.Point(3, 7);
+            this.webStuffButton.Name = "webStuffButton";
+            this.webStuffButton.Size = new System.Drawing.Size(44, 46);
+            this.webStuffButton.TabIndex = 11;
+            this.webStuffButton.UseVisualStyleBackColor = true;
+            this.webStuffButton.Click += new System.EventHandler(this.webStuffButton_Click);
             // 
             // discordButton
             // 
@@ -185,7 +188,7 @@
             // 
             // webBrowserMain
             // 
-            this.webBrowserMain.Controls.Add(this.webBrowser2);
+            this.webBrowserMain.Controls.Add(this.mainBrowser);
             this.webBrowserMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webBrowserMain.Location = new System.Drawing.Point(50, 77);
             this.webBrowserMain.Name = "webBrowserMain";
@@ -193,15 +196,16 @@
             this.webBrowserMain.TabIndex = 2;
             this.webBrowserMain.Paint += new System.Windows.Forms.PaintEventHandler(this.webBrowserMain_Paint);
             // 
-            // webBrowser2
+            // mainBrowser
             // 
-            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser2.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser2.Name = "webBrowser2";
-            this.webBrowser2.Size = new System.Drawing.Size(1300, 652);
-            this.webBrowser2.TabIndex = 0;
-            this.webBrowser2.Url = new System.Uri("http://www.google.com", System.UriKind.Absolute);
+            this.mainBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainBrowser.Location = new System.Drawing.Point(0, 0);
+            this.mainBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.mainBrowser.Name = "mainBrowser";
+            this.mainBrowser.Size = new System.Drawing.Size(1300, 652);
+            this.mainBrowser.TabIndex = 0;
+            this.mainBrowser.Url = new System.Uri("http://www.google.com", System.UriKind.Absolute);
+            this.mainBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.mainBrowser_Navigating);
             // 
             // mainWebBrowser
             // 
@@ -294,8 +298,12 @@
             // 
             // searchPanel
             // 
+            this.searchPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.searchPanel.Controls.Add(this.keyWordsCombo);
+            this.searchPanel.Controls.Add(this.keyWordsButton);
+            this.searchPanel.Controls.Add(this.homeButton);
             this.searchPanel.Controls.Add(this.panel1);
-            this.searchPanel.Controls.Add(this.textBox1);
+            this.searchPanel.Controls.Add(this.searchBox);
             this.searchPanel.Controls.Add(this.refreshButton);
             this.searchPanel.Controls.Add(this.nextButton);
             this.searchPanel.Controls.Add(this.backButton);
@@ -306,29 +314,62 @@
             this.searchPanel.TabIndex = 4;
             this.searchPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.searchPanel_Paint);
             // 
+            // keyWordsCombo
+            // 
+            this.keyWordsCombo.FormattingEnabled = true;
+            this.keyWordsCombo.Location = new System.Drawing.Point(1173, 9);
+            this.keyWordsCombo.Name = "keyWordsCombo";
+            this.keyWordsCombo.Size = new System.Drawing.Size(121, 21);
+            this.keyWordsCombo.TabIndex = 9;
+            // 
+            // keyWordsButton
+            // 
+            this.keyWordsButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.keyWordsButton.FlatAppearance.BorderSize = 0;
+            this.keyWordsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(54)))));
+            this.keyWordsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.keyWordsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.keyWordsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.keyWordsButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.keyWordsButton.Image = global::WebBrowser_p1.Properties.Resources.keywords;
+            this.keyWordsButton.Location = new System.Drawing.Point(1300, 0);
+            this.keyWordsButton.Name = "keyWordsButton";
+            this.keyWordsButton.Size = new System.Drawing.Size(25, 36);
+            this.keyWordsButton.TabIndex = 8;
+            this.keyWordsButton.UseVisualStyleBackColor = true;
+            this.keyWordsButton.Click += new System.EventHandler(this.keyWordsButton_Click);
+            // 
+            // homeButton
+            // 
+            this.homeButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.homeButton.FlatAppearance.BorderSize = 0;
+            this.homeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(54)))));
+            this.homeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.homeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.homeButton.Image = global::WebBrowser_p1.Properties.Resources.home;
+            this.homeButton.Location = new System.Drawing.Point(1325, 0);
+            this.homeButton.Name = "homeButton";
+            this.homeButton.Size = new System.Drawing.Size(25, 36);
+            this.homeButton.TabIndex = 7;
+            this.homeButton.UseVisualStyleBackColor = true;
+            this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
+            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.webBrowser1);
             this.panel1.Controls.Add(this.mainWebBrowser);
             this.panel1.Location = new System.Drawing.Point(1147, 36);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 100);
             this.panel1.TabIndex = 1;
             // 
-            // webBrowser1
+            // searchBox
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(250, 250);
-            this.webBrowser1.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(133, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1121, 20);
-            this.textBox1.TabIndex = 6;
+            this.searchBox.Location = new System.Drawing.Point(133, 10);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(939, 20);
+            this.searchBox.TabIndex = 6;
             // 
             // refreshButton
             // 
@@ -339,12 +380,13 @@
             this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.refreshButton.Image = global::WebBrowser_p1.Properties.Resources.refresh;
             this.refreshButton.Location = new System.Drawing.Point(50, 0);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(25, 36);
             this.refreshButton.TabIndex = 5;
-            this.refreshButton.Text = "R";
             this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // nextButton
             // 
@@ -354,13 +396,14 @@
             this.nextButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.nextButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.nextButton.Location = new System.Drawing.Point(25, 0);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(25, 36);
             this.nextButton.TabIndex = 4;
             this.nextButton.Text = ">";
             this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // backButton
             // 
@@ -370,13 +413,14 @@
             this.backButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.backButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.backButton.Location = new System.Drawing.Point(0, 0);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(25, 36);
             this.backButton.TabIndex = 3;
             this.backButton.Text = "<";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // slidePanelTimer
             // 
@@ -422,10 +466,10 @@
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button refreshButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Panel widgetsBar;
         private System.Windows.Forms.Button whatsappButton;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button webStuffButton;
         private System.Windows.Forms.Button discordButton;
         private System.Windows.Forms.Button messengerButton;
         private System.Windows.Forms.Button instagramButton;
@@ -433,8 +477,10 @@
         private System.Windows.Forms.Timer slidePanelTimer;
         private System.Windows.Forms.WebBrowser widgetsWebBrowser;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.WebBrowser webBrowser2;
+        private System.Windows.Forms.WebBrowser mainBrowser;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button homeButton;
+        private System.Windows.Forms.Button keyWordsButton;
+        private System.Windows.Forms.ComboBox keyWordsCombo;
     }
 }
